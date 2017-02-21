@@ -19,16 +19,14 @@ def is_intellij_project(path, d):
     return len(project_files)
 
 
-def list_intellij_projects(path, prefix):
-    dirs = list_dirs(path)
-    intellij_dirs = [d for d in dirs if is_intellij_project(path, d)]
-    return intellij_dirs if not prefix else [d for d in intellij_dirs if str.startswith(d, prefix)]
+def list_intellij_projects(path):
+    intellij_dirs = [d for d in list_dirs(path) if is_intellij_project(path, d)]
+    return intellij_dirs
 
 
 def main(wf):
     projects_path = '/Users/geipette/projects'
-    args = wf.args
-    for intellij_dir in list_intellij_projects(projects_path, args[0] if len(args) > 0 else None):
+    for intellij_dir in list_intellij_projects(projects_path):
         wf.add_item(title=intellij_dir,
                     arg=projects_path + '/' + intellij_dir,
                     subtitle=projects_path + '/' + intellij_dir,

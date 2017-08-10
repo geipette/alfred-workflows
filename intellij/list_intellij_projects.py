@@ -21,8 +21,12 @@ def is_intellij_project(path, d):
     return len(project_files)
 
 
+def not_hidden(d):
+    return not d.startswith('.')
+
+
 def filter_intellij_projects(path):
-    intellij_dirs = [d for d in list_dirs(path) if is_intellij_project(path, d)]
+    intellij_dirs = [d for d in list_dirs(path) if is_intellij_project(path, d) and not_hidden(d)]
     return intellij_dirs
 
 

@@ -16,7 +16,3 @@ Update Alfred workflow library
 --
 
     pip install --upgrade --target=. Alfred-Workflow
-
-Build a new `intellij.alfredworkflow`
---
-    ./workflow-build.py intellij
